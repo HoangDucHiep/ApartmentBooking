@@ -37,7 +37,7 @@ public class BookingReservedDomainEventHandler : INotificationHandler<BookingRes
         }
 
         var subject = "Booking reserved!";
-        var body = $"Your booking for {booking.Apartment.Name} has been confirmed from {booking.StartDate} to {booking.EndDate}.";
+        var body = $"You have 10 minutes to confirm this booking";
         await _emailService.SendAsync(user.Email, subject, body);
     }
 }
