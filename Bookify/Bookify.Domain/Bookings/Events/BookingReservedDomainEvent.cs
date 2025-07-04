@@ -4,10 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Bookify.Domain.Abstractions;
-using MediatR;
 
-namespace Bookify.Application.Abstractions.Messaging;
+namespace Bookify.Domain.Bookings.Events;
 
-public interface IQuery<TResponse> : IRequest<Result<TResponse>>
-{
-}
+public sealed record BookingReservedDomainEvent(Guid BookingId) : IDomainEvent;

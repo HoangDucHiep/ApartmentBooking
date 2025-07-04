@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Bookify.Domain.Entities.Abstractions;
+using Bookify.Domain.Abstractions;
 using MediatR;
 
 namespace Bookify.Application.Abstractions.Messaging;
@@ -12,4 +12,5 @@ public interface IQueryHandler<TQuery, TResponse> : IRequestHandler<TQuery, Resu
     where TQuery : IQuery<TResponse>
     //where TResponse : Entity
 {
+
 }
