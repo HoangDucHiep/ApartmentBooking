@@ -60,7 +60,7 @@ public sealed class ReserveBookingCommandHandler : ICommandHandler<ReserveBookin
             apartment,
             user.Id,
             duration,
-            utcNow: _dateTimeProvider.UtcNow,
+            _dateTimeProvider.UtcNow,
             _pricingService);
 
         _bookingRepository.Add(booking);
