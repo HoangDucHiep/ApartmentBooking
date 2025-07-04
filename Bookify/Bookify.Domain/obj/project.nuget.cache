@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "M6wAEAeaJyo=",
+  "success": true,
+  "projectFilePath": "D:\\NewLearningEra\\ASPnetCore\\ApartmentBooking\\Bookify\\Bookify.Domain\\Bookify.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\HoangHiep\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
