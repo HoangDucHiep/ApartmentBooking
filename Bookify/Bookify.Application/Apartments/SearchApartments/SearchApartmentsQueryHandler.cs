@@ -16,11 +16,11 @@ public sealed class SearchApartmentsQueryHandler : IQueryHandler<SearchApartment
         (int)BookingStatus.Completed
     };
 
-    private readonly ISqlConnectFactory _sqlConnectFactory;
+    private readonly ISqlConnectionFactory _sqlConnectionFactory;
 
-    public SearchApartmentsQueryHandler(ISqlConnectFactory sqlConnectFactory)
+    public SearchApartmentsQueryHandler(ISqlConnectionFactory sqlConnectionFactory)
     {
-        _sqlConnectFactory = sqlConnectFactory ?? throw new ArgumentNullException(nameof(sqlConnectFactory));
+        _sqlConnectionFactory = sqlConnectionFactory ?? throw new ArgumentNullException(nameof(sqlConnectionFactory));
     }
 
     public async Task<Result<IReadOnlyList<ApartmentResponse>>> Handle(SearchApartmentsQuery request, CancellationToken cancellationToken)
@@ -30,7 +30,7 @@ public sealed class SearchApartmentsQueryHandler : IQueryHandler<SearchApartment
             return new List<ApartmentResponse>();
         }
 
-        using var connection = _sqlConnectFactory.CreateConnection();
+        using var connection = _sqlConnectionFactory.CreateConnection();
 
         const string sql = """
                            SELECT

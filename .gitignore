@@ -1,3 +1,5 @@
+.containers
+
 # Visual Studio
 .vs/
 *.suo
@@ -18,6 +20,12 @@ x86/
 bld/
 [Bb]in/
 [Oo]bj/
+
+*.DotSettings
+*.dcproj
+docker-compose.override.yml
+docker-compose.yml
+
 [Ll]og/
 
 # .NET Core

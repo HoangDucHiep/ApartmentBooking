@@ -8,16 +8,16 @@ namespace Bookify.Application.Bookings.GetBooking;
 public class GetBookingQueryHandler : IQueryHandler<GetBookingQuery, BookingResponse>
 {
 
-    private readonly ISqlConnectFactory _sqlConnectFactory;
+    private readonly ISqlConnectionFactory _sqlConnectionFactory;
 
-    public GetBookingQueryHandler(ISqlConnectFactory sqlConnectFactory)
+    public GetBookingQueryHandler(ISqlConnectionFactory sqlConnectionFactory)
     {
-        _sqlConnectFactory = sqlConnectFactory;
+        _sqlConnectionFactory = sqlConnectionFactory;
     }
 
     public async Task<Result<BookingResponse>> Handle(GetBookingQuery request, CancellationToken cancellationToken)
     {
-        using var connection = _sqlConnectFactory.CreateConnection();
+        using var connection = _sqlConnectionFactory.CreateConnection();
 
         const string sql = """
                            SELECT

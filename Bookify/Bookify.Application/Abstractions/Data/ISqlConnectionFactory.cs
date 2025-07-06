@@ -2,7 +2,7 @@
 
 namespace Bookify.Application.Abstractions.Data;
 
-public interface ISqlConnectFactory
+public interface ISqlConnectionFactory
 {
     IDbConnection CreateConnection();
 }
