@@ -18,7 +18,7 @@ public abstract class Repository<T>
         return await _dbContext.Set<T>().FirstOrDefaultAsync(e => e.Id == id, cancellationToken);
     }
 
-    public void Add(T entity)
+    public virtual void Add(T entity)
     {
         _dbContext.Add(entity);
     }
