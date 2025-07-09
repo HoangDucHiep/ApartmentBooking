@@ -46,6 +46,8 @@ public static class DependencyInjection
 
         AddCaching(services, configuration);
 
+        AddHealthChecks(services, configuration);
+
         return services;
     }
 
@@ -128,5 +130,17 @@ public static class DependencyInjection
         services.AddStackExchangeRedisCache(options => options.Configuration = connectionString);
 
         services.AddSingleton<ICacheService, CacheService>();
+    }
+
+    private static void AddHealthChecks(IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddHealthChecks()
+            .AddNpgSql(configuration.GetConnectionString("Database") ?? throw new ArgumentNullException(nameof(configuration)),
+                name: "Database",
+                tags: new[] { "ready" })
+            .AddRedis(configuration.GetConnectionString("Cache") ?? throw new ArgumentNullException(nameof(configuration)),
+                name: "Cache",
+                tags: new[] { "ready" })
+            .AddUrlGroup(new Uri(configuration["KeyCloak:BaseUrl"]!), HttpMethod.Get, "keycloak");
     }
 }
